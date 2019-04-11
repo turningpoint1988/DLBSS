@@ -40,25 +40,6 @@ def SharedDeepBindwithShape(shape1=None, shape2=None, params=None, penalty = 0.0
     return model
 
 # build hybrid model
-def DeepBindwithShape(shape1=None, shape2=None, params=None, penalty = 0.005):
-    
-    main_input = Input(shape=shape1, name='sequence')
-    X = Convolution1D(16, 13, activation='relu', padding='same', name='seq_conv')(main_input)
-    
-    auxiliary_input = Input(shape=shape2, name='shape')
-    Y = Convolution1D(16, 13, activation='relu', padding='same', name='shape_conv')(auxiliary_input)
-    
-    concat = concatenate([X, Y], axis=-1)
-    Z = GlobalMaxPooling1D()(concat)
-    Z = Dense(32, activation='relu', kernel_regularizer=regularizers.l2(penalty))(Z)
-    Z = Dropout(params['DROPOUT'])(Z)
-    output = Dense(1)(Z)
-    
-    model = Model(inputs=[main_input, auxiliary_input], outputs=output)
-    print model.summary()
-    return model
-
-# build hybrid model
 def SharedDeepCNNwithShape(shape1=None, shape2=None, params=None, penalty = 0.005):
     
     digit_input = Input(shape=shape1)
