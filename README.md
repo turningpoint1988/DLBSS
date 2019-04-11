@@ -3,7 +3,7 @@
 
 ## Requirements
 
-+ To install Kreas with Tensorflow backend, please refer to https://keras.io/#installation. 
++ To install Keras with Tensorflow backend, please refer to https://keras.io/#installation. 
 
 + Python 2.7
 
