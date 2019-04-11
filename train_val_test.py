@@ -43,13 +43,6 @@ def main():
        with h5py.File(seq_path_train, 'r') as f:
            seqs_data_train = np.asarray(f['data'])
            intensity_train = np.asarray(f['intensity'])
-           
-    elif args.run == 'dinucleotide':
-       print 'only using dinucleotide vectors.'
-       seq_path = args.datadir + '/train.hdf5'
-       with h5py.File(seq_path, 'r') as f1:
-           seqs_data_train = np.asarray(f1['data'])
-           intensity_train = np.asarray(f1['intensity'])
     else:
        print >> sys.stderr, 'invalid command!';sys.exit(1)
     seqs_num = seqs_data_train.shape[0]; seqs_len = seqs_data_train.shape[1]; seqs_dim = seqs_data_train.shape[2]
@@ -86,7 +79,7 @@ def main():
                print >> f_params, "the {}-th paramter setting of the {}-th folds is {}".format(params_num, fold, params)
                
                print 'Building model...'
-               model = DeepSea(input_shape, params)
+               model = DeepBind(input_shape, params)
                #return
                checkpointer = ModelCheckpoint(filepath=file_path + '/model/%s/params%d_bestmodel_%dfold.hdf5' 
                                                 % (name, params_num, fold), monitor='val_loss', verbose=1, save_best_only=True)
