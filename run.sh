@@ -9,6 +9,7 @@ do
 	   echo $eachTF 'has existed.'
 	   continue
 	fi
+    # run: 'MGW', 'ProT', 'Roll', 'HelT', 'MPRH'
     python train_val_test_hybrid.py -datadir ./pbmdata/$eachTF/data -run 'MGW' -batchsize 300 -k 5 -params 30 --train
 done
 
