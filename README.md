@@ -1,6 +1,12 @@
 # DLBSS
 Ｉmplementation of "predicting in vitro transcription factor binding sites using DNA sequence + shape"
 
+## Requirements
+
++ To install Kreas with Tensorflow backend, please refer to https://keras.io/#installation. 
+
++ Python 2.7
+
 ## Data preparation
 Firstly, using encode.py script to preprocess DNA sequences and their corresponding shape features.
 + Usage:
