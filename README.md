@@ -7,7 +7,7 @@ Firstly, using encode.py script to preprocess DNA sequences and their correspond
   ```
   bash encode.sh <pbmdata>
   ```
-  <pbmdata> denotes the path of storing experimental data.
+  **pbmdata** denotes the path of storing experimental data.
 
 ## Run 
 **Run the models without using DNA shape information**
@@ -22,7 +22,7 @@ Firstly, using encode.py script to preprocess DNA sequences and their correspond
   ```
   python train_val_test_hybrid.py -datadir <data path> -run 'MPRH' -batchsize 300 -k 5 -params 30 --train
   ```
-  <data path> denotes the path of the current dataset.
+  **data path** denotes the path of the current dataset.
 
 + Type the following for details on other optional arguments:
 	```
