@@ -10,14 +10,14 @@ Firstly, using encode.py script to preprocess DNA sequences and their correspond
   <pbmdata> denotes the path of storing experimental data.
 
 ## Run 
-##Run the models without using DNA shape information##
+**Run the models without using DNA shape information**
 + Usage:
   ```
   python train_val_test.py -datadir <data path> -run 'onehot' -batchsize 300 -k 5 -params 30 --train
   ```
-  <data path> denotes the path of the current dataset.
+  '<data path>' denotes the path of the current dataset.
  
-##Run the models using DNA shape information##
+**Run the models using DNA shape information**
 + Usage:
   ```
   python train_val_test_hybrid.py -datadir <data path> -run 'MPRH' -batchsize 300 -k 5 -params 30 --train
