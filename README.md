@@ -15,7 +15,7 @@ Firstly, using encode.py script to preprocess DNA sequences and their correspond
   ```
   python train_val_test.py -datadir <data path> -run 'onehot' -batchsize 300 -k 5 -params 30 --train
   ```
-  '<data path>' denotes the path of the current dataset.
+  **<data path>** denotes the path of the current dataset.
  
 **Run the models using DNA shape information**
 + Usage:
