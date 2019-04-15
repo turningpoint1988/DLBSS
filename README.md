@@ -1,5 +1,5 @@
 # DLBSS
-Ｉmplementation of "predicting in vitro transcription factor binding sites using DNA sequence + shape"
+Implementation of "predicting in vitro transcription factor binding sites using DNA sequence + shape"
 
 ## Requirements
 
