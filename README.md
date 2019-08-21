@@ -17,18 +17,19 @@ Firstly, using encode.sh script to preprocess DNA sequences and their correspond
 
 ## Run 
 **Run DeepBind_K or DeepCNN without using DNA shape information**
-+ Usage: you can excute run.sh script directly, in which you should modify python command in it accordingly, e.g.:
++ Usage: you can excute run.sh script directly, in which you should modify python command accordingly, e.g.:
   ```
-  python train_val_test.py -datadir <data path> -run 'noshape' -model 'shallow' -batchsize 300 -k 5 -params 30 --train
+  python train_val_test.py -datadir ./pbmdata/$eachTF/data -run 'noshape' -model 'shallow' -batchsize 300 -k 5 -params 30 --train
   ```
-  **'data path'** denotes the path of the current dataset, e.g.  the command '-run' can be a choice of {'shollow', 'deep'}, where 'shollow' means DeepBind_K, and 'deep' means DeepCNN
+ The command '-model' can be a choice of {'shollow', 'deep'}, where 'shollow' means DeepBind_K, and 'deep' means DeepCNN.
  
 **Run DLBSS(shallow) or DLBSS(deep) using DNA shape information**
-+ Usage: you can excute run.sh script directly, in which you should modify python command in it accordingly, e.g.:
++ Usage: you can excute run.sh script directly, in which you should modify python command accordingly, e.g.:
   ```
-  python train_val_test_hybrid.py -datadir <data path> -run 'shape' -model 'shallow' -batchsize 300 -k 5 -params 30 --train
+  python train_val_test_hybrid.py -datadir ./pbmdata/$eachTF/data -run 'shape' -model 'shallow' -batchsize 300 -k 5 -params 30 --train
   ```
-  **data path** denotes the path of the current dataset.
+The command '-run' can be a choice of {'shape', 'MGW', 'ProT', 'Roll', 'HelT'}, where 'shape' means using all shape feature, 'MGW' means using MGW shape feature, and so on.
+The command '-model' can be a choice of {'shollow', 'deep'}, where 'shollow' means DLBSS(shallow), and 'deep' means 'DLBSS(deep)'.
 
 + Type the following for details on other optional arguments:
 	```
