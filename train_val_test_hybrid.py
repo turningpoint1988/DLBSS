@@ -22,8 +22,9 @@ def parse_args():
     parser.add_argument('-params', dest='params', type=int, default=1, help='the number of paramter settings')
     parser.add_argument('--train', dest='train', action='store_true', help='train and test step')
     parser.add_argument('--no-train', dest='train', action='store_false', help='only test step.')
-    parser.add_argument('-plot', dest='plot', action='store_true', default=True, help='only test step')
-    parser.add_argument('-run', dest='run', type=str, default='MPRH', help='three encoding methods, including onehot, kmer, gappedkmer')
+    parser.add_argument('-plot', dest='plot', action='store_true', default=True, help='plot the training process')
+    parser.add_argument('-run', dest='run', type=str, default='shape', help='five shape features, including MGW, ProT, Roll, HelT and shape')
+    parser.add_argument('-model', dest='model', type=str, default='shallow', help='two models, including shallow and deep')
     
     return parser.parse_args()
 
@@ -95,9 +96,9 @@ def main():
            print 'there are %d seqences, each of which is a %d*%d array' %(seqs_num, seqs_len, seqs_dim)
            input_shape1 = (seqs_len, seqs_dim)
            shape_num = shape_data_train.shape[0]; shape_len = shape_data_train.shape[1]; shape_dim = shape_data_train.shape[2];
-           print 'there are %d shape sequences, each of which is a %d*%d vector' %(shape_num, shape_len, shape_dim)
+           print 'there are %d shape sequences, each of which is a %d*%d array' %(shape_num, shape_len, shape_dim)
            input_shape2 = (shape_len, shape_dim)
-    elif args.run == 'MPRH':
+    elif args.run == 'shape':
        print 'using DNA sequences and MPRH shape features.'
        seq_path_train = args.datadir + '/train.hdf5'
        shape_path_train = args.datadir + '/train_MPRH.hdf5'
@@ -110,13 +111,14 @@ def main():
            print 'there are %d seqences, each of which is a %d*%d array' %(seqs_num, seqs_len, seqs_dim)
            input_shape1 = (seqs_len, seqs_dim)
            shape_num = shape_data_train.shape[0]; shape_len = shape_data_train.shape[1]; shape_dim = shape_data_train.shape[2];
-           print 'there are %d shape sequences, each of which is a %d*%d vector' %(shape_num, shape_len, shape_dim)
+           print 'there are %d shape sequences, each of which is a %d*%d array' %(shape_num, shape_len, shape_dim)
            input_shape2 = (shape_len, shape_dim)
     else:
        print >> sys.stderr, 'invalid command!';sys.exit(1)
 
     assert seqs_num == shape_num, "the number of them must be consistent."
     assert seqs_len == shape_len, "the length of them must be consistent."
+    
     # k-folds cross-validation
     indices = np.arange(seqs_num)
     np.random.shuffle(indices)
@@ -130,7 +132,7 @@ def main():
     model_name = 'model_' + args.run
     if not exists(file_path + '/%s/%s' % (model_name, name)):
        print 'Building ' + file_path + '/%s/%s' % (model_name, name)
-       os.mkdir(file_path + '/%s/%s' % (model_name, name))
+       os.makedirs(file_path + '/%s/%s' % (model_name, name))
     f_params = open(file_path + '/%s/%s/params.txt' % (model_name, name), 'w')
     for fold in range(args.k_folds):
         x_train = seqs_data_train[train_ids[fold]]
@@ -152,7 +154,12 @@ def main():
                print >> f_params, "the {}-th paramter setting of the {}-th fold is {}".format(params_num, fold, params)
                
                print 'Building model...'
-               model = SharedDeepBindwithShape(input_shape1, input_shape2, params)
+               if args.model == 'deep':
+                  model = SharedDeepCNNwithShape(input_shape1, input_shape2, params)
+               elif args.model == 'shallow':
+                  model = SharedDeepBindwithShape(input_shape1, input_shape2, params)
+               else:
+                   print >> sys.stderr, 'invalid command!'; sys.exit(1)
                
                checkpointer = ModelCheckpoint(filepath=file_path + '/%s/%s/params%d_bestmodel_%dfold.hdf5' 
                                                 % (model_name, name, params_num, fold), 
@@ -198,9 +205,4 @@ def main():
         print >> f, "{:.4f}".format(np.mean(R2))
     
 if __name__ == '__main__': main()    
-    
-    
-    
-    
-    
-    
+ 
