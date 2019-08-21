@@ -16,12 +16,14 @@ Firstly, using encode.sh script to preprocess DNA sequences and their correspond
   **'pbmdata'** denotes the path of storing experimental data, e.g. /yourpath/pbmdata.
 
 ## Run 
-**Run the models without using DNA shape information**
+**Run DeepBind_K or DeepCNN without using DNA shape information**
 + Usage:
   ```
-  python train_val_test.py -datadir <data path> -run 'onehot' -batchsize 300 -k 5 -params 30 --train
+  python train_val_test.py -datadir <data path> -run 'onehot' -model 'shallow' -batchsize 300 -k 5 -params 30 --train
+  or
+  python train_val_test.py -datadir <data path> -run 'onehot' -model 'deep' -batchsize 300 -k 5 -params 30 --train
   ```
-  **data path** denotes the path of the current dataset.
+  **'data path'** denotes the path of the current dataset.
  
 **Run the models using DNA shape information**
 + Usage:
