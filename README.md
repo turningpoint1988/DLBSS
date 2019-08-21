@@ -13,7 +13,7 @@ Firstly, using encode.py script to preprocess DNA sequences and their correspond
   ```
   bash encode.sh <pbmdata>
   ```
-  **pbmdata** denotes the path of storing experimental data.
+  **<pbmdata>** denotes the path of storing experimental data.
 
 ## Run 
 **Run the models without using DNA shape information**
