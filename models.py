@@ -2,8 +2,8 @@ from keras.models import Sequential, Model
 from keras.layers import Convolution1D, MaxPooling1D, GlobalMaxPooling1D, Dense, Dropout, Flatten, Input, concatenate, BatchNormalization, Activation, add, Bidirectional, LSTM, GRU
 from keras import regularizers
 
-# DeepBind model
-def DeepBind(shape = None, params = None, penalty = 0.005):
+# Keras-based DeepBind model
+def DeepBind_K(shape = None, params = None, penalty = 0.005):
     model = Sequential()
     model.add(Convolution1D(filters=16, kernel_size=13, padding='same', activation='relu',
                 kernel_regularizer=regularizers.l2(penalty),input_shape=shape))
