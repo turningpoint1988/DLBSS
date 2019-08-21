@@ -17,18 +17,16 @@ Firstly, using encode.sh script to preprocess DNA sequences and their correspond
 
 ## Run 
 **Run DeepBind_K or DeepCNN without using DNA shape information**
-+ Usage:
++ Usage: you can excute run.sh script directly, in which you should modify python command in it accordingly, e.g.:
   ```
-  python train_val_test.py -datadir <data path> -run 'onehot' -model 'shallow' -batchsize 300 -k 5 -params 30 --train
-  or
-  python train_val_test.py -datadir <data path> -run 'onehot' -model 'deep' -batchsize 300 -k 5 -params 30 --train
+  python train_val_test.py -datadir <data path> -run 'noshape' -model 'shallow' -batchsize 300 -k 5 -params 30 --train
   ```
-  **'data path'** denotes the path of the current dataset.
+  **'data path'** denotes the path of the current dataset, e.g.  the command '-run' can be a choice of {'shollow', 'deep'}, where 'shollow' means DeepBind_K, and 'deep' means DeepCNN
  
-**Run the models using DNA shape information**
-+ Usage:
+**Run DLBSS(shallow) or DLBSS(deep) using DNA shape information**
++ Usage: you can excute run.sh script directly, in which you should modify python command in it accordingly, e.g.:
   ```
-  python train_val_test_hybrid.py -datadir <data path> -run 'MPRH' -batchsize 300 -k 5 -params 30 --train
+  python train_val_test_hybrid.py -datadir <data path> -run 'shape' -model 'shallow' -batchsize 300 -k 5 -params 30 --train
   ```
   **data path** denotes the path of the current dataset.
 
