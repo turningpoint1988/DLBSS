@@ -23,7 +23,7 @@ def parse_args():
     parser.add_argument('--train', dest='train', action='store_true', help='train and test step')
     parser.add_argument('--no-train', dest='train', action='store_false', help='only test step.')
     parser.add_argument('-plot', dest='plot', action='store_true', default=True, help='plot the training process')
-    parser.add_argument('-run', dest='run', type=str, default='onehot', help='onehot')
+    parser.add_argument('-run', dest='run', type=str, default='noshape', help='')
     parser.add_argument('-model', dest='model', type=str, default='shallow', help='two models, including shallow and deep')
 
     return parser.parse_args()
@@ -38,7 +38,7 @@ def main():
     print 'working on %s now' % name
     
     # convert raw data 
-    if args.run == 'onehot':
+    if args.run == 'noshape':
        print 'only using one-hot vectors.'
        seq_path_train = args.datadir + '/train.hdf5'
        with h5py.File(seq_path_train, 'r') as f:
@@ -59,7 +59,7 @@ def main():
 
     R2 = []
     
-    model_name = 'model_' + args.run
+    model_name = 'model_' + args.model + '_' + args.run
     if not exists(file_path + '/%s/%s' % (model_name, name)):
        print 'Building ' + file_path + '/%s/%s' % (model_name, name)
        os.makedirs(file_path + '/%s/%s' % (model_name, name))
