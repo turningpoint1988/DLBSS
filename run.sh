@@ -11,6 +11,6 @@ do
 	   continue
 	fi
     # run: 'MGW', 'ProT', 'Roll', 'HelT', 'MPRH'
-    python train_val_test.py -datadir <data path> -run 'noshape' -model 'shallow' -batchsize 300 -k 5 -params 30 --train
+    python train_val_test.py -datadir ./pbmdata/$eachTF/data -run 'noshape' -model 'shallow' -batchsize 300 -k 5 -params 30 --train
 done
 
