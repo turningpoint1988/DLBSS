@@ -8,12 +8,12 @@ Implementation of "predicting in vitro transcription factor binding sites using 
 + Python 2.7
 
 ## Data preparation
-Firstly, using encode.py script to preprocess DNA sequences and their corresponding shape features.
+Firstly, using encode.sh script to preprocess DNA sequences and their corresponding shape features.
 + Usage:
   ```
   bash encode.sh <pbmdata>
   ```
-  **'pbmdata'** denotes the path of storing experimental data.
+  **'pbmdata'** denotes the path of storing experimental data, e.g. /yourpath/pbmdata.
 
 ## Run 
 **Run the models without using DNA shape information**
