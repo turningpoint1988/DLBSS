@@ -129,7 +129,7 @@ def main():
     train_ids, test_ids, valid_ids = Id_k_folds(seqs_num, args.k_folds, args.ratio)
     R2 = []
     
-    model_name = 'model_' + args.run
+    model_name = 'model_' + args.model + '_' + args.run
     if not exists(file_path + '/%s/%s' % (model_name, name)):
        print 'Building ' + file_path + '/%s/%s' % (model_name, name)
        os.makedirs(file_path + '/%s/%s' % (model_name, name))
