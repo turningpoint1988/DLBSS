@@ -30,7 +30,7 @@ Firstly, using encode.sh script to preprocess DNA sequences and their correspond
   ```
 The command '-run' can be a choice of {'shape', 'MGW', 'ProT', 'Roll', 'HelT'}, where 'shape' means using all shape feature, 'MGW' means using MGW shape feature, and so on.<br />
 The command '-model' can be a choice of {'shollow', 'deep'}, where 'shollow' means DLBSS(shallow), and 'deep' means 'DLBSS(deep)'.<br />
-Note that you should change the ouput path in the run.sh script, the naming rule is: 'model_' + args.model + '_' + args.run.
+**Note that** you should change the ouput path in the run.sh script, the naming rule is: 'model_' + args.model + '_' + args.run.
 
 + Type the following for details on other optional arguments:
 	```
